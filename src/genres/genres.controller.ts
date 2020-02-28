@@ -1,4 +1,4 @@
-import { Controller, Delete, Patch, Post, Get, Param } from '@nestjs/common';
+import { Controller, Delete, Patch, Post, Get, Param, Body } from '@nestjs/common';
 
 @Controller('genres')
 export class GenresController {
@@ -14,16 +14,16 @@ export class GenresController {
     }
 
     @Post('/new')
-    addNewGenre(genreDto: any) {
-        return true;
+    addNewGenre(@Body() body: any) {
+        return body;
     }
 
     @Patch('/update')
-    updateGenre(genreDto: any) {
-        return true;
+    updateGenre(@Body() body: any) {
+        return body;
     }
 
-    @Delete('/delete/id')
+    @Delete(':id')
     deleteGenre(@Param('id') id: string) {
         return { id };
     }

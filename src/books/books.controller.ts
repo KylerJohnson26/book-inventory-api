@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Patch, Delete, Param } from '@nestjs/common';
+import { Controller, Get, Post, Patch, Delete, Param, Body } from '@nestjs/common';
 
 @Controller('books')
 export class BooksController {
@@ -9,22 +9,22 @@ export class BooksController {
     }
 
     @Get(':id')
-    getBookById(@Param() params) {
+    getBookById(@Param() params: any) {
         return { params };
     }
 
     @Post('/new')
-    addNewBook(bookDto: any) {
-        return true;
+    addNewBook(@Body() body: any) {
+        return body;
     }
 
     @Patch('/update')
-    updateBook(bookDto: any) {
-        return true;
+    updateBook(@Body() body: any) {
+        return body;
     }
 
-    @Delete('/delete:id')
-    deleteBook(@Param() params) {
+    @Delete(':id')
+    deleteBook(@Param() params: any) {
         return { params };
     }
 }
