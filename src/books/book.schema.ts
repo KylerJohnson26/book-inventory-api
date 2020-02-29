@@ -1,9 +1,13 @@
 import * as mongoose from 'mongoose';
 
 export const BookSchema = new mongoose.Schema({
-    id: Number,
+    _id: { 
+        type: mongoose.Schema.ObjectId,
+        auto: true
+    },
     title: String,
-    author: Number,
+    author: String,
     genre: String,
-    dateCreated: Date
+    price: Number,
+    dateAdded: { type: Date, default: Date.now }
 });
