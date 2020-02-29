@@ -11,12 +11,25 @@ export class BookService {
 
     async create(createBookDto: CreateBookDto): Promise<Book> {
         const createdBook = new this.bookModel(createBookDto);
-        console.log(createdBook);
         return createdBook.save();
     }
 
     async findAll(): Promise<Book[]> {
         return this.bookModel.find().exec();
+    }
+
+    async findById(id: string): Promise<Book> {
+        return this.bookModel.findOne({ _id: id }).exec();
+    }
+
+    async updateById(book: Book): Promise<Book> {      
+        const options = { new: true, useFindAndModify: false }
+        return this.bookModel.findByIdAndUpdate(book._id, { $set: book }, options);
+    }
+
+    async deleteById(id: string): Promise<boolean> {
+        const result = await this.bookModel.deleteOne({ _id: id });
+        return result && result.deletedCount > 0;
     }
     
 }

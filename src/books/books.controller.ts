@@ -1,6 +1,7 @@
 import { Controller, Get, Post, Patch, Delete, Param, Body } from '@nestjs/common';
 import { CreateBookDto } from './create-book-dto.interface';
 import { BookService } from './book.service';
+import { Book } from './book.interface';
 
 @Controller('books')
 export class BooksController {
@@ -15,8 +16,8 @@ export class BooksController {
     }
 
     @Get(':id')
-    getBookById(@Param() params: any) {
-        return { params };
+    getBookById(@Param('id') id: string) {
+        return this.bookService.findById(id);
     }
 
     @Post('/new')
@@ -25,12 +26,12 @@ export class BooksController {
     }
 
     @Patch('/update')
-    updateBook(@Body() body: any) {
-        return body;
+    updateBook(@Body() book: Book) {
+        return this.bookService.updateById(book);
     }
 
     @Delete(':id')
-    deleteBook(@Param() params: any) {
-        return { params };
+    deleteBook(@Param('id') id: string) {
+        return this.bookService.deleteById(id);
     }
 }
