@@ -1,6 +1,9 @@
 import * as mongoose from 'mongoose';
 
 export const GenreSchema = new mongoose.Schema({
-    id: Number,
-    genre: String,
+    _id: { 
+        type: mongoose.Schema.ObjectId,
+        auto: true
+    },
+    name: String,
 });
