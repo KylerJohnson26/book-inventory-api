@@ -28,8 +28,7 @@ export class BookService {
     }
 
     async deleteById(id: string): Promise<boolean> {
-        const result = await this.bookModel.deleteOne({ _id: id });
-        return result && result.deletedCount > 0;
+        return this.bookModel.findByIdAndDelete(id);
     }
     
 }
