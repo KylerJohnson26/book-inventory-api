@@ -8,7 +8,7 @@ export class GenresController {
 
     constructor(private genreService: GenreService) {}
 
-    @Get('/all')
+    @Get()
     getAllGenres() {
         return this.genreService.findAll();
     }
@@ -18,12 +18,12 @@ export class GenresController {
         return this.genreService.findById(id);
     }
 
-    @Post('/new')
+    @Post()
     addNewGenre(@Body() createGenreDto: CreateGenreDto) {
         return this.genreService.create(createGenreDto);
     }
 
-    @Patch('/update')
+    @Patch()
     updateGenre(@Body() genre: Genre) {
         return this.genreService.updateById(genre);
     }

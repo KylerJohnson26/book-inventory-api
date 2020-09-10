@@ -10,7 +10,7 @@ export class BooksController {
         private bookService: BookService
     ) {}
 
-    @Get('/all')
+    @Get()
     getAllBooks() {
         return this.bookService.findAll();
     }
@@ -20,12 +20,12 @@ export class BooksController {
         return this.bookService.findById(id);
     }
 
-    @Post('/new')
+    @Post()
     addNewBook(@Body() createBookDto: CreateBookDto) {
         return this.bookService.create(createBookDto);
     }
 
-    @Patch('/update')
+    @Patch()
     updateBook(@Body() book: Book) {
         return this.bookService.updateById(book);
     }

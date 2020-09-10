@@ -6,7 +6,7 @@ import { GenresModule } from './genres/genres.module';
 @Module({
   imports: [
     MongooseModule.forRoot(
-      'mongodb://127.0.0.1:27017/book-inventory', 
+      'mongodb://127.0.0.1:33017/book-inventory-manager', 
       { useNewUrlParser: true, useUnifiedTopology: true }
     ),
     BooksModule,
